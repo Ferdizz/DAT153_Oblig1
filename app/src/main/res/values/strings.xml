@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Name-app</string>
+    <string name="list_names">List all names</string>
+    <string name="gallery">Open gallery</string>
+    <string name="learning_mode">Open learning mode</string>
+    <string name="title_activity_gallery">GalleryActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>
