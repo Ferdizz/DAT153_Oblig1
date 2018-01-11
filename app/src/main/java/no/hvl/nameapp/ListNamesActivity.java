@@ -14,7 +14,12 @@ public class ListNamesActivity extends ListActivity {
 
     // placeholder data
     private final Person[] LIST = new Person[] {new Person(null,"Per"),
-            new Person(null,"Pål"), new Person(null,"Espen")};
+            new Person(null,"Pål"), new Person(null,"Espen"),
+            new Person(null,"Geir"), new Person(null,"Trude"),
+            new Person(null,"Ole"), new Person(null,"Tim"),
+            new Person(null,"Stine"), new Person(null,"Ingrid"),
+            new Person(null,"Tine"), new Person(null,"Bente"),
+            new Person(null,"Jimmy"), new Person(null,"Mona")};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
