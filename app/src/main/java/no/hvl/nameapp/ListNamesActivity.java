@@ -1,13 +1,41 @@
 package no.hvl.nameapp;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.AlertDialog;
+import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class ListNamesActivity extends AppCompatActivity {
+import no.hvl.nameapp.data.Person;
+
+public class ListNamesActivity extends ListActivity {
+
+    // placeholder data
+    private final Person[] LIST = new Person[] {new Person(null,"Per"),
+            new Person(null,"Pål"), new Person(null,"Espen")};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_names);
+
+        //shady method to generate list items from array
+        setListAdapter(new ArrayAdapter<>(this,R.layout.list_item_view, LIST));
+        getListView().setTextFilterEnabled(true);
     }
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        // placeholder click event
+        new AlertDialog.Builder(this)
+                .setTitle("" + getListView().getItemAtPosition(position))
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {}
+                        })
+                .show();
+    }
+
 }
