@@ -9,18 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import no.hvl.nameapp.data.PersonDB;
+
 public class ImageAdapter extends BaseAdapter{
+
     private Context context;
     private Util util = new Util();
-
-    public Integer[] images = {
-            R.drawable.img1, R.drawable.img2,
-            R.drawable.img3, R.drawable.img4,
-            R.drawable.img5, R.drawable.img6,
-            R.drawable.img7, R.drawable.img8,
-            R.drawable.img9, R.drawable.img10,
-            R.drawable.img11, R.drawable.img12,
-    };
+    private PersonDB db = PersonDB.getInstance();
 
     public ImageAdapter(Context c) {
         context = c;
@@ -28,17 +23,17 @@ public class ImageAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return images.length;
+        return db.count();
     }
 
     @Override
     public Object getItem(int i) {
-        return images[i];
+        return db.getPersonByIndex(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return db.getIdByIndex(i);
     }
 
     @Override
@@ -61,7 +56,9 @@ public class ImageAdapter extends BaseAdapter{
 //        imgView.setImageBitmap(
 //                util.decodeSampledBitmapFromResource(context.getResources(), images[i], pixels, pixels)
 //        );
-        imgView.setImageBitmap(util.getDecodedBitmap(context.getResources(), images[i]));
+        imgView.setImageBitmap(util.getDecodedBitmap(context.getResources(), db.getAll().get(i).getPicture()));
+//        imgView.setImageResource(db.getAll().get(i).getPicture());
+
         return imgView;
 
 //        imgView.setImageBitmap(util.compressImage(images[i]));

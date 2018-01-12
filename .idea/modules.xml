@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DAT153_Oblig1.iml" filepath="$PROJECT_DIR$/DAT153_Oblig1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Nameapp.iml" filepath="$PROJECT_DIR$/Nameapp.iml" />
+      <module fileurl="file://C:\AndroidProjects\DAT153_Oblig1\Nameapp.iml" filepath="C:\AndroidProjects\DAT153_Oblig1\Nameapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
