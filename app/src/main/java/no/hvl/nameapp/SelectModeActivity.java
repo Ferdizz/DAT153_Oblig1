@@ -14,7 +14,8 @@ public class SelectModeActivity extends AppCompatActivity {
     }
 
     public void listNames(View view){
-
+        Intent intent = new Intent(this, ListNamesActivity.class);
+        startActivity(intent);
     }
 
     public void openGallery(View view){
@@ -23,6 +24,7 @@ public class SelectModeActivity extends AppCompatActivity {
     }
 
     public void openLearningMode(View view){
-
+        Intent intent = new Intent(this, LearningModeActivity.class);
+        startActivity(intent);
     }
 }
