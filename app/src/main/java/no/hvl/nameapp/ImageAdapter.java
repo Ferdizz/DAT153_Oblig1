@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter{
     private Context context;
+    private Util util = new Util();
 
     public Integer[] images = {
             R.drawable.img1, R.drawable.img2,
@@ -44,7 +45,7 @@ public class ImageAdapter extends BaseAdapter{
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         int pixels = getScreenWidth() / 3;
-        Log.i("Width", pixels + "");
+//        Log.i("Width", pixels + "");
 
         ImageView imgView;
         if(view == null){
@@ -56,7 +57,11 @@ public class ImageAdapter extends BaseAdapter{
             imgView = (ImageView) view;
         }
 
-        imgView.setImageResource(images[i]);
+//        imgView.setImageResource(images[i]);
+//        imgView.setImageBitmap(
+//                util.decodeSampledBitmapFromResource(context.getResources(), images[i], pixels, pixels)
+//        );
+        imgView.setImageBitmap(util.getDecodedBitmap(context.getResources(), images[i]));
         return imgView;
 
 //        imgView.setImageBitmap(util.compressImage(images[i]));
