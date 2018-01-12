@@ -40,7 +40,6 @@ public class ImageAdapter extends BaseAdapter{
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         int pixels = getScreenWidth() / 3;
-//        Log.i("Width", pixels + "");
 
         ImageView imgView;
         if(view == null){
@@ -52,16 +51,10 @@ public class ImageAdapter extends BaseAdapter{
             imgView = (ImageView) view;
         }
 
-//        imgView.setImageResource(images[i]);
-//        imgView.setImageBitmap(
-//                util.decodeSampledBitmapFromResource(context.getResources(), images[i], pixels, pixels)
-//        );
         imgView.setImageBitmap(util.getDecodedBitmap(context.getResources(), db.getAll().get(i).getPicture()));
-//        imgView.setImageResource(db.getAll().get(i).getPicture());
 
         return imgView;
 
-//        imgView.setImageBitmap(util.compressImage(images[i]));
     }
 
     public int getScreenWidth() {

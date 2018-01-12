@@ -1,6 +1,5 @@
 package no.hvl.nameapp;
 
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ public class GalleryActivity extends AppCompatActivity {
         });
 
     }
-
 
     public void addPerson(View view) {
         Intent intent = new Intent(this, AddPersonActivity.class);

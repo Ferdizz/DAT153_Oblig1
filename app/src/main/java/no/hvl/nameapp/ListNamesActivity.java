@@ -14,9 +14,7 @@ import no.hvl.nameapp.data.PersonDB;
 
 public class ListNamesActivity extends ListActivity {
 
-
     private PersonDB db = PersonDB.getInstance();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

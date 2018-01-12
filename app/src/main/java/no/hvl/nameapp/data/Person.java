@@ -1,8 +1,5 @@
 package no.hvl.nameapp.data;
 
-
-import android.graphics.drawable.Drawable;
-
 /**
  * @author Torbjørn
  */

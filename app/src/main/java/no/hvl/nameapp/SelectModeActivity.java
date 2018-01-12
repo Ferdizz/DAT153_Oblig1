@@ -27,4 +27,10 @@ public class SelectModeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LearningModeActivity.class);
         startActivity(intent);
     }
+
+    public void addPerson(View view){
+        Intent intent = new Intent(this, AddPersonActivity.class);
+        startActivity(intent);
+    }
+
 }
