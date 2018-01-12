@@ -13,8 +13,9 @@ import no.hvl.nameapp.data.PersonDB;
 
 public class ListNamesActivity extends ListActivity {
 
-    // placeholder data
+
     private PersonDB db = PersonDB.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class ListNamesActivity extends ListActivity {
         setListAdapter(new ArrayAdapter<>(this,R.layout.list_item_view, db.getAll()));
         getListView().setTextFilterEnabled(true);
     }
+
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
