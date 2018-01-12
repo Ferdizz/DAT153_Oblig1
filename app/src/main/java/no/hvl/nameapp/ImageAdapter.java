@@ -1,6 +1,8 @@
 package no.hvl.nameapp;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -35,10 +37,29 @@ public class ImageAdapter extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ImageView imgView = new ImageView(context);
+
+        int pixels = getScreenWidth() / 3;
+        Log.i("Width", pixels + "");
+
+        ImageView imgView;
+        if(view == null){
+            imgView = new ImageView(context);
+            imgView.setLayoutParams(new GridView.LayoutParams(pixels, pixels));
+            imgView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imgView.setPadding(8,8,8,8);
+        }else{
+            imgView = (ImageView) view;
+        }
+
         imgView.setImageResource(db.getAll().get(i).getPicture());
-        imgView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imgView.setLayoutParams(new GridView.LayoutParams(500, 500));
+
         return imgView;
+
+//        imgView.setImageBitmap(util.compressImage(images[i]));
     }
+
+    public int getScreenWidth() {
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
+    }
+
 }
