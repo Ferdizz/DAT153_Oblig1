@@ -30,6 +30,5 @@ public class ViewPersonActivity extends AppCompatActivity {
             imgView.setImageResource(p.getPicture());
         }
 
-
     }
 }
