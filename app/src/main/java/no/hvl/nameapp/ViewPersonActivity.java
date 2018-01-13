@@ -22,11 +22,14 @@ public class ViewPersonActivity extends AppCompatActivity {
         PersonDB db = PersonDB.getInstance();
         Person p = db.getPersonById(intent.getLongExtra("ID", 0));
 
-        ImageView imgView = (ImageView) findViewById(R.id.profilePicture);
-        TextView textView = (TextView) findViewById(R.id.profileName);
+        if(p != null){
+            ImageView imgView = (ImageView) findViewById(R.id.profilePicture);
+            TextView textView = (TextView) findViewById(R.id.profileName);
 
-        textView.setText(p.getName());
-        imgView.setImageResource(p.getPicture());
+            textView.setText(p.getName());
+            imgView.setImageResource(p.getPicture());
+        }
+
 
     }
 }

@@ -17,7 +17,7 @@ public class Person {
     public Person(Integer picture, String name) {
         this.picture = picture;
         this.name = name;
-        this.id = ++IDGEN;
+        this.id = IDGEN++;
     }
 
     public long getId() {

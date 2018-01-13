@@ -24,19 +24,16 @@ public class ListNamesActivity extends ListActivity {
         //shady method to generate list items from array
         setListAdapter(new ArrayAdapter<>(this,R.layout.list_item_view, db.getAll()));
         getListView().setTextFilterEnabled(true);
+
     }
 
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        // placeholder click event
-        new AlertDialog.Builder(this)
-                .setTitle("" + getListView().getItemAtPosition(position))
-                .setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {}
-                        })
-                .show();
+        Intent intent = new Intent(getApplicationContext(), ViewPersonActivity.class);
+        intent.putExtra("ID", id);
+        startActivity(intent);
+
     }
 
     public void addPerson(View view) {

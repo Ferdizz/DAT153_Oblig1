@@ -20,11 +20,9 @@ public class GalleryActivity extends AppCompatActivity {
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int index, long id) {
-//                Toast.makeText(getApplicationContext(), "" + index, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(), ViewPersonActivity.class);
                 intent.putExtra("ID", id);
-//                intent.putExtra("IMAGEINDEX", index);
                 startActivity(intent);
 
             }
