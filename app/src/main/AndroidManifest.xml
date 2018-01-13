@@ -19,7 +19,8 @@
         <activity android:name=".GalleryActivity" />
         <activity android:name=".ListNamesActivity" />
         <activity android:name=".LearningModeActivity" />
-        <activity android:name=".AddPersonActivity"></activity>
+        <activity android:name=".AddPersonActivity" />
+        <activity android:name=".ViewPersonActivity"></activity>
     </application>
 
 </manifest>
