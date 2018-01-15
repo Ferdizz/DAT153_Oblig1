@@ -1,10 +1,9 @@
 package no.hvl.nameapp.data;
 
 
-import android.content.Context;
-import android.graphics.BitmapFactory;
-
 import java.util.ArrayList;
+
+import no.hvl.nameapp.Util;
 import no.hvl.nameapp.R;
 
 /**
@@ -17,6 +16,19 @@ public class PersonDB {
     private ArrayList<Person> list = new ArrayList<>();
 
     private PersonDB() {
+
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img1),"Per"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img2),"Ole"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img3),"Geir"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img4),"Truls"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img5),"Jimmy"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img6),"Steve"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img7),"Hans"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img8),"Tine"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img9),"Josefine"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img10),"Albert"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img11),"Steffen"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img12),"Jimmy"));
     }
 
     /** getInstance
