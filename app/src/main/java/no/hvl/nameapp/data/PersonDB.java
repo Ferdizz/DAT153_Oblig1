@@ -1,5 +1,9 @@
 package no.hvl.nameapp.data;
 
+
+import android.content.Context;
+import android.graphics.BitmapFactory;
+
 import java.util.ArrayList;
 import no.hvl.nameapp.R;
 
@@ -13,19 +17,6 @@ public class PersonDB {
     private ArrayList<Person> list = new ArrayList<>();
 
     private PersonDB() {
-        // Hardcoded mock data.
-        list.add(new Person(R.drawable.img1,"Mona"));
-        list.add(new Person(R.drawable.img2,"Timmy"));
-        list.add(new Person(R.drawable.img3,"Per"));
-        list.add(new Person(R.drawable.img4,"Hans"));
-        list.add(new Person(R.drawable.img5,"Ole"));
-        list.add(new Person(R.drawable.img6,"Tine"));
-        list.add(new Person(R.drawable.img7,"Tim"));
-        list.add(new Person(R.drawable.img8,"Geir"));
-        list.add(new Person(R.drawable.img9,"Tommy"));
-        list.add(new Person(R.drawable.img10,"Stine"));
-        list.add(new Person(R.drawable.img11,"Rupert"));
-        list.add(new Person(R.drawable.img12,"Franz"));
     }
 
     /** getInstance
