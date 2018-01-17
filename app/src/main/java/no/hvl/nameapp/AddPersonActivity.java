@@ -34,15 +34,19 @@ public class AddPersonActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        InputStream is = null;
-        try {
-            is = getContentResolver().openInputStream(data.getData());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if(data != null){
+            InputStream is = null;
+            try {
+                is = getContentResolver().openInputStream(data.getData());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Bitmap bitmap = BitmapFactory.decodeStream(is);
+            ImageView iv = findViewById(R.id.imageView);
+            iv.setImageBitmap(bitmap);
+        } else {
+            // TODO:
         }
-        Bitmap bitmap = BitmapFactory.decodeStream(is);
-        ImageView iv = findViewById(R.id.imageView);
-        iv.setImageBitmap(bitmap);
     }
 
     public void addPerson(View view) {
