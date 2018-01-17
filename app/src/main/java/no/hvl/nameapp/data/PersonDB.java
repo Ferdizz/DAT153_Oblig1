@@ -1,6 +1,9 @@
 package no.hvl.nameapp.data;
 
+
 import java.util.ArrayList;
+
+import no.hvl.nameapp.Util;
 import no.hvl.nameapp.R;
 
 /**
@@ -13,19 +16,19 @@ public class PersonDB {
     private ArrayList<Person> list = new ArrayList<>();
 
     private PersonDB() {
-        // Hardcoded mock data.
-        list.add(new Person(R.drawable.img1,"Mona"));
-        list.add(new Person(R.drawable.img2,"Timmy"));
-        list.add(new Person(R.drawable.img3,"Per"));
-        list.add(new Person(R.drawable.img4,"Hans"));
-        list.add(new Person(R.drawable.img5,"Ole"));
-        list.add(new Person(R.drawable.img6,"Tine"));
-        list.add(new Person(R.drawable.img7,"Tim"));
-        list.add(new Person(R.drawable.img8,"Geir"));
-        list.add(new Person(R.drawable.img9,"Tommy"));
-        list.add(new Person(R.drawable.img10,"Stine"));
-        list.add(new Person(R.drawable.img11,"Rupert"));
-        list.add(new Person(R.drawable.img12,"Franz"));
+
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img1),"Per"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img2),"Ole"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img3),"Geir"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img4),"Truls"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img5),"Jimmy"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img6),"Steve"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img7),"Hans"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img8),"Tine"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img9),"Josefine"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img10),"Albert"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img11),"Steffen"));
+        list.add(new Person(Util.getDecodedBitmap(Util.getContext().getResources(), R.drawable.img12),"Jimmy"));
     }
 
     /** getInstance

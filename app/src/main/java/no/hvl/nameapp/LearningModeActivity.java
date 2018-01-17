@@ -42,7 +42,7 @@ public class LearningModeActivity extends AppCompatActivity {
         scoreCountView.setText(score.toString());
         image = findViewById(R.id.imageView4);
 
-        image.setImageBitmap(BitmapFactory.decodeResource(getResources(),currentPerson.getPicture()));
+        image.setImageBitmap(currentPerson.getPicture());
         guessed = new ArrayList<>();
         guessed.add(currentPerson);
     }
@@ -83,7 +83,7 @@ public class LearningModeActivity extends AppCompatActivity {
 
     private void update() {
         guessed.add(currentPerson);
-        image.setImageBitmap(BitmapFactory.decodeResource(getResources(),currentPerson.getPicture()));
+        image.setImageBitmap(currentPerson.getPicture());
         scoreCountView.setText(score.toString());
         guessText.setText("");
     }

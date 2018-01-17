@@ -1,20 +1,22 @@
 package no.hvl.nameapp.data;
 
+import android.graphics.Bitmap;
+
 /**
  * @author Torbjørn
  */
 
 public class Person {
     private static long IDGEN = 0;
-    private Integer picture;
+    private Bitmap picture;
     private String name;
     private long id;
 
     public Person() {
-        this(null, "");
+        this( null, "");
     }
 
-    public Person(Integer picture, String name) {
+    public Person(Bitmap picture, String name) {
         this.picture = picture;
         this.name = name;
         this.id = IDGEN++;
@@ -24,7 +26,7 @@ public class Person {
         return id;
     }
 
-    public Integer getPicture() {
+    public Bitmap getPicture() {
         return picture;
     }
 

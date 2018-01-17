@@ -3,6 +3,7 @@ package no.hvl.nameapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,16 +41,16 @@ public class AddPersonActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Bitmap bitmap = BitmapFactory.decodeStream(is);
-        ImageView iv = (ImageView) findViewById(R.id.imageView);
+        ImageView iv = findViewById(R.id.imageView);
         iv.setImageBitmap(bitmap);
     }
 
     public void addPerson(View view) {
         ImageView iv = (ImageView) findViewById(R.id.imageView);
-        iv.getDrawable();
         EditText editText = (EditText) findViewById(R.id.editText);
         String str =  editText.getText().toString();
-        Person p = new Person(null,str);
+        Bitmap b = ((BitmapDrawable) iv.getDrawable()).getBitmap();
+        Person p = new Person(b,str);
         db.addPerson(p);
         Intent intent = new Intent(this, ListNamesActivity.class);
         startActivity(intent);

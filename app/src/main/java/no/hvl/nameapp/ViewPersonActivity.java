@@ -27,7 +27,7 @@ public class ViewPersonActivity extends AppCompatActivity {
             TextView textView = (TextView) findViewById(R.id.profileName);
 
             textView.setText(p.getName());
-            imgView.setImageResource(p.getPicture());
+            imgView.setImageBitmap(p.getPicture());
         }
 
     }
