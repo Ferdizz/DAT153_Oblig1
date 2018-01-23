@@ -3,7 +3,6 @@ package no.hvl.nameapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +26,7 @@ public class ViewPersonActivity extends AppCompatActivity {
             TextView textView = (TextView) findViewById(R.id.profileName);
 
             textView.setText(p.getName());
-            imgView.setImageBitmap(p.getPicture());
+            imgView.setImageURI(p.getImageURI());
         }
 
     }

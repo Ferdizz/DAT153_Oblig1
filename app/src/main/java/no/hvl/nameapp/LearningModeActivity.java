@@ -2,7 +2,6 @@ package no.hvl.nameapp;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import no.hvl.nameapp.data.Person;
@@ -24,7 +21,7 @@ public class LearningModeActivity extends AppCompatActivity {
     private ArrayList<Person> guessed;
     private Integer score = 0;
     private Person currentPerson;
-    private ImageView image;
+    private ImageView imageView;
     private TextView scoreCountView;
     private EditText guessText;
 
@@ -40,9 +37,9 @@ public class LearningModeActivity extends AppCompatActivity {
         score = 0;
         scoreCountView = findViewById(R.id.textView_score);
         scoreCountView.setText(score.toString());
-        image = findViewById(R.id.imageView4);
+        imageView = findViewById(R.id.imageView4);
 
-        image.setImageBitmap(currentPerson.getPicture());
+        imageView.setImageURI(currentPerson.getImageURI());
         guessed = new ArrayList<>();
         guessed.add(currentPerson);
     }
@@ -83,7 +80,7 @@ public class LearningModeActivity extends AppCompatActivity {
 
     private void update() {
         guessed.add(currentPerson);
-        image.setImageBitmap(currentPerson.getPicture());
+        imageView.setImageURI(currentPerson.getImageURI());
         scoreCountView.setText(score.toString());
         guessText.setText("");
     }

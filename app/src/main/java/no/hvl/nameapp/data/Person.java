@@ -1,6 +1,6 @@
 package no.hvl.nameapp.data;
 
-import android.graphics.Bitmap;
+import android.net.Uri;
 
 /**
  * @author Torbjørn
@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 
 public class Person {
     private static long IDGEN = 0;
-    private Bitmap picture;
+    private Uri imageURI;
     private String name;
     private long id;
 
@@ -16,8 +16,8 @@ public class Person {
         this( null, "");
     }
 
-    public Person(Bitmap picture, String name) {
-        this.picture = picture;
+    public Person(Uri imageURI, String name) {
+        this.imageURI = imageURI;
         this.name = name;
         this.id = IDGEN++;
     }
@@ -26,8 +26,8 @@ public class Person {
         return id;
     }
 
-    public Bitmap getPicture() {
-        return picture;
+    public Uri getImageURI() {
+        return imageURI;
     }
 
     public String getName() {

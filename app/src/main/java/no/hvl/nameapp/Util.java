@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 public class Util extends Application{
 
@@ -15,7 +16,6 @@ public class Util extends Application{
         opts.inSampleSize = 4;
         return BitmapFactory.decodeResource(res, resId, opts);
     }
-
 
     @Override
     public void onCreate() {

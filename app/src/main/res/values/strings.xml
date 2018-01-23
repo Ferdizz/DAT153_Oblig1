@@ -11,4 +11,6 @@
     <string name="guess">Guess</string>
     <string name="guess_who">Who is this?</string>
     <string name="score">Score</string>
+    <string name="select_image">Select image</string>
+    <string name="capture_image">Capture image</string>
 </resources>

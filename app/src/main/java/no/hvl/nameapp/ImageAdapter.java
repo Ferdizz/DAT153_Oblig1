@@ -49,7 +49,7 @@ public class ImageAdapter extends BaseAdapter{
             imgView = (ImageView) view;
         }
 
-        imgView.setImageBitmap(db.getAll().get(i).getPicture());
+        imgView.setImageURI(db.getAll().get(i).getImageURI());
 
         return imgView;
 
