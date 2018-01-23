@@ -49,8 +49,9 @@ public class LearningModeActivity extends AppCompatActivity {
         String guess = guessText.getText().toString();
         if (isGuessCorrect(currentPerson, guess)) {
             score++;
-        };
-        if(isGameover()) {
+        }
+
+        if (isGameover()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Game Over")
                     .setMessage("Game over " + score + "/" + db.count())
@@ -62,14 +63,14 @@ public class LearningModeActivity extends AppCompatActivity {
                     .setNegativeButton("Return to Menu", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(getApplicationContext(),SelectModeActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), SelectModeActivity.class);
                             startActivity(intent);
                         }
                     }).show();
 
             startNewGame();
         } else {
-            while(guessed.contains(currentPerson)) {
+            while (guessed.contains(currentPerson)) {
                 currentPerson = db.getRandomPerson();
             }
             update();
@@ -90,7 +91,7 @@ public class LearningModeActivity extends AppCompatActivity {
     }
 
     private boolean isGuessCorrect(Person currentPerson, String guess) {
-       return (guess.toLowerCase()).equals(currentPerson.getName().toLowerCase());
+        return (guess.toLowerCase()).equals(currentPerson.getName().toLowerCase());
     }
 
 }

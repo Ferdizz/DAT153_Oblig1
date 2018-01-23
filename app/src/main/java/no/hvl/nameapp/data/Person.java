@@ -12,10 +12,6 @@ public class Person {
     private String name;
     private long id;
 
-    public Person() {
-        this( null, "");
-    }
-
     public Person(Uri imageURI, String name) {
         this.imageURI = imageURI;
         this.name = name;
@@ -33,6 +29,7 @@ public class Person {
     public String getName() {
         return name;
     }
+
     @Override
     public String toString() {
         return name;

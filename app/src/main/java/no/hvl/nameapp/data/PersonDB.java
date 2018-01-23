@@ -4,6 +4,7 @@ package no.hvl.nameapp.data;
 import android.net.Uri;
 
 import java.util.ArrayList;
+
 import no.hvl.nameapp.R;
 
 /**
@@ -30,19 +31,20 @@ public class PersonDB {
         list.add(new Person(Uri.parse("android.resource://no.hvl.nameapp/" + R.drawable.img12), "Jimmy"));
     }
 
-    /** getInstance
-     *
+    /**
+     * getInstance
      *
      * @return an Instance of the PersonDB
      */
     public static PersonDB getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new PersonDB();
         }
         return instance;
     }
 
-    /** count
+    /**
+     * count
      *
      * @return number of people in the db
      */
@@ -50,7 +52,8 @@ public class PersonDB {
         return list.size();
     }
 
-    /** getPersonByIndex
+    /**
+     * getPersonByIndex
      *
      * @param i index of the person you want
      * @return Person matching the index
@@ -60,7 +63,6 @@ public class PersonDB {
     }
 
     /**
-     *
      * @param i index of the Person
      * @return id of the Person whose index you provided.
      */
@@ -68,17 +70,19 @@ public class PersonDB {
         return list.get(i).getId();
     }
 
-    /** getAll
+    /**
+     * getAll
      *
      * @return List of all Persons1
-     *
      */
     public ArrayList<Person> getAll() {
         return list;
     }
 
-    /** addPerson
-     *  Adds a person to the 'database'
+    /**
+     * addPerson
+     * Adds a person to the 'database'
+     *
      * @param p Person to be added
      */
     public void addPerson(Person p) {
@@ -86,7 +90,8 @@ public class PersonDB {
     }
 
     /**
-     *  getPersonByID
+     * getPersonByID
+     *
      * @param id the ID of the person you want
      * @return a Person with id matching input or null
      */
@@ -98,7 +103,8 @@ public class PersonDB {
         return null;
     }
 
-    /** getRandomPerson
+    /**
+     * getRandomPerson
      *
      * @return a random Person from the db
      */

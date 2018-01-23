@@ -1,11 +1,9 @@
 package no.hvl.nameapp;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,17 +11,15 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import no.hvl.nameapp.data.PersonDB;
 
-public class ImageAdapter extends BaseAdapter{
+public class ImageAdapter extends BaseAdapter {
 
-    private Context context;
-    private Util util = new Util();
     private PersonDB db = PersonDB.getInstance();
 
-    public ImageAdapter(Context c) {
-        context = c;
+    public ImageAdapter() {
     }
 
     @Override
@@ -42,36 +38,33 @@ public class ImageAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-
-        int pixels = getScreenWidth() / 3;
+    public View getView(int i, View view, ViewGroup parent) {
 
         ImageView imgView;
-        if(view == null){
-            imgView = new ImageView(context);
+        int pixels = getScreenWidth() / 3;
+
+        if (view == null) {
+            imgView = new ImageView(parent.getContext());
             imgView.setLayoutParams(new GridView.LayoutParams(pixels, pixels));
             imgView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        }else{
+        } else {
             imgView = (ImageView) view;
         }
-        imgView.setImageURI(db.getAll().get(i).getImageURI());
 
-        /*  TODO: komprimerer bilder i galleriet, men det er noe galt med permissions, så det krasjer
-              etter at det blir lagt til eksterne bilder.
+        Uri uri = db.getAll().get(i).getImageURI();
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inSampleSize = 4;
 
         try {
-            final int THUMBNAIL_SIZE = 256;
-            Uri imageUri = db.getAll().get(i).getImageURI()
-            Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), imageUri);
-            bitmap = Bitmap.createScaledBitmap(bitmap, THUMBNAIL_SIZE, THUMBNAIL_SIZE, false);
-            imgView.setImageBitmap(bitmap)
+            InputStream is = parent.getContext().getContentResolver().openInputStream(uri);
+            Bitmap bitmap = BitmapFactory.decodeStream(is, null, opts);
+            imgView.setImageBitmap(bitmap);
+            is.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
 
         return imgView;
-
     }
 
     public int getScreenWidth() {

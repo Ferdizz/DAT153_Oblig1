@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 public class GalleryActivity extends AppCompatActivity {
 
@@ -16,7 +15,7 @@ public class GalleryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gallery);
 
         GridView gridView = (GridView) findViewById(R.id.gridView);
-        gridView.setAdapter(new ImageAdapter(this));
+        gridView.setAdapter(new ImageAdapter());
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int index, long id) {
@@ -27,7 +26,6 @@ public class GalleryActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void addPerson(View view) {
