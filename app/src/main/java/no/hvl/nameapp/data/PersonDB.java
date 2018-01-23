@@ -4,8 +4,6 @@ package no.hvl.nameapp.data;
 import android.net.Uri;
 
 import java.util.ArrayList;
-
-import no.hvl.nameapp.Util;
 import no.hvl.nameapp.R;
 
 /**

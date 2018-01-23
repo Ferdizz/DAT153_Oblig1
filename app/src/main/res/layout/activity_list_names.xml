@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListNamesActivity"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ListNamesActivity">
 <LinearLayout
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
@@ -14,7 +14,7 @@
     >
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/list_view"
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
@@ -23,13 +23,14 @@
         android:focusable="true" />
 </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/pluss_button"
+        android:contentDescription="@string/pluss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:onClick="addPerson"
-        android:text="@string/pluss" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

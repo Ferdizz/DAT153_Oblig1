@@ -2,11 +2,17 @@ package no.hvl.nameapp;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import java.io.IOException;
 
 import no.hvl.nameapp.data.PersonDB;
 
@@ -48,8 +54,21 @@ public class ImageAdapter extends BaseAdapter{
         }else{
             imgView = (ImageView) view;
         }
-
         imgView.setImageURI(db.getAll().get(i).getImageURI());
+
+        /*  TODO: komprimerer bilder i galleriet, men det er noe galt med permissions, så det krasjer
+              etter at det blir lagt til eksterne bilder.
+
+        try {
+            final int THUMBNAIL_SIZE = 256;
+            Uri imageUri = db.getAll().get(i).getImageURI()
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), imageUri);
+            bitmap = Bitmap.createScaledBitmap(bitmap, THUMBNAIL_SIZE, THUMBNAIL_SIZE, false);
+            imgView.setImageBitmap(bitmap)
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
 
         return imgView;
 

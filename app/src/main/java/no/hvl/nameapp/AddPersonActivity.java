@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -42,24 +43,9 @@ public class AddPersonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
-
-        Button selectImgBtn = findViewById(R.id.selectImgBtn);
-        final Button captureImgBtn = findViewById(R.id.captureImgBtn);
-
-        selectImgBtn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                selectImage();
-            }
-        });
-
-        captureImgBtn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                captureImage();
-            }
-        });
     }
 
-    private void captureImage() {
+    public void captureImage(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         if(intent.resolveActivity(getPackageManager()) != null){
@@ -78,7 +64,7 @@ public class AddPersonActivity extends AppCompatActivity {
         }
     }
 
-    private void selectImage() {
+    public void selectImage(View view) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -93,7 +79,6 @@ public class AddPersonActivity extends AppCompatActivity {
             }
             ImageView iv = (ImageView) findViewById(R.id.imageView);
             iv.setImageURI(uri);
-            addPerson();
         }
     }
 
@@ -127,12 +112,12 @@ public class AddPersonActivity extends AppCompatActivity {
 //        }
 //    }
 
-    private void addPerson() {
+    public void addPerson(View view) {
         EditText editText = (EditText) findViewById(R.id.editText);
         String name =  editText.getText().toString();
 
         if(name.isEmpty()){
-            //TODO: Create toaster message?
+          Toast.makeText(getApplicationContext(),R.string.no_name, Toast.LENGTH_LONG).show();
         }else{
             Person p = new Person(uri, name);
             db.addPerson(p);
