@@ -13,6 +13,7 @@ import no.hvl.nameapp.data.PersonDB;
 public class ListNamesActivity extends AppCompatActivity {
 
     private PersonDB db = PersonDB.getInstance();
+    private ArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,7 @@ public class ListNamesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_names);
 
         ListView lv = (ListView) findViewById(R.id.list_view);
-        lv.setAdapter(new ArrayAdapter<>(this, R.layout.list_item_view, db.getAll()));
+        lv.setAdapter(adapter = new ArrayAdapter<>(this, R.layout.list_item_view, db.getAll()));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -33,9 +34,15 @@ public class ListNamesActivity extends AppCompatActivity {
         lv.setTextFilterEnabled(true);
     }
 
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
+
     public void addPerson(View view) {
         Intent intent = new Intent(this, AddPersonActivity.class);
         startActivity(intent);
+        finish();
     }
 
 }
