@@ -1,11 +1,16 @@
 package no.hvl.nameapp;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -81,7 +86,8 @@ public class LearningModeActivity extends AppCompatActivity {
 
     private void update() {
         guessed.add(currentPerson);
-        imageView.setImageURI(currentPerson.getImageURI());
+      //  imageView.setImageURI(currentPerson.getImageURI());
+        changeImage(getApplicationContext(),imageView,currentPerson.getImageURI());
         scoreCountView.setText(score.toString());
         guessText.setText("");
     }
@@ -94,4 +100,26 @@ public class LearningModeActivity extends AppCompatActivity {
         return (guess.toLowerCase()).equals(currentPerson.getName().toLowerCase());
     }
 
-}
+    private void changeImage(Context c,final ImageView v,final Uri new_image) {
+         final Animation anim_out = AnimationUtils.loadAnimation(c, android.R.anim.slide_out_right);
+         final Animation anim_in  = AnimationUtils.loadAnimation(c, android.R.anim.slide_in_left);
+        anim_out.setAnimationListener(new Animation.AnimationListener()
+        {
+            @Override public void onAnimationStart(Animation animation) {}
+            @Override public void onAnimationRepeat(Animation animation) {}
+            @Override public void onAnimationEnd(Animation animation)
+            {
+                v.setImageURI(new_image);
+                anim_in.setAnimationListener(new Animation.AnimationListener() {
+                    @Override public void onAnimationStart(Animation animation) {}
+                    @Override public void onAnimationRepeat(Animation animation) {}
+                    @Override public void onAnimationEnd(Animation animation) {}
+                });
+                v.startAnimation(anim_in);
+            }
+        });
+        v.startAnimation(anim_out);
+    }
+    }
+
+
