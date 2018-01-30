@@ -57,9 +57,8 @@ public class AddPersonActivity extends AppCompatActivity {
     }
 
     public void selectImage(View view) {
-        Intent intent = new Intent();
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select File"), REQUEST_GALLERY);
     }
 

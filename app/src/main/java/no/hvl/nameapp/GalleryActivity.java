@@ -41,5 +41,4 @@ public class GalleryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // TODO: probably needs onResume/adapterNotify
 }
