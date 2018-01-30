@@ -25,6 +25,6 @@ InputStream is = context.getContentResolver().openInputStream(imageUri);
 Bitmap bitmap = BitmapFactory.decodeStream(is);
 ```
 
-
+### [Tesplan](https://github.com/ferdizz/DAT153_Oblig1/blob/master/Testplan.md)
 
 #skole/dat153
