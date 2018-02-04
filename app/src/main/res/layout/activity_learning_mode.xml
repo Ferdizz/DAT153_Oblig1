@@ -9,6 +9,7 @@
         android:layout_centerVertical="true"
         android:orientation="vertical"
         tools:context=".LearningModeActivity"
+        android:id="@+id/learning_mode_layout"
         >
 
         <LinearLayout

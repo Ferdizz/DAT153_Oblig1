@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="no.hvl.nameapp.AddPersonActivity"
     android:id="@+id/add_person_layout"
+
     >
 
     <LinearLayout
