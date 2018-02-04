@@ -65,6 +65,7 @@ public class TestListNamesActivity {
                 .check(matches(isDisplayed()));
     }
 
+
     @Test
     public void testClickAdd() {
         onView(withId(R.id.button2)).perform(click());
