@@ -1,22 +1,22 @@
 # Testplan
 
 ### SelectModeActivity
-- [ ] Navigates to name list
-- [ ] Navigates to gallery
-- [ ] Navigates to learning mode
-- [ ] Navigates to add person
+- [x] Navigates to name list
+- [x] Navigates to gallery
+- [x] Navigates to learning mode
+- [x] Navigates to add person
 
 ### ListNamesActivity
-- [ ] Navigates back
-- [ ] Navigates up
-- [ ] Navigates to view person
-- [ ] Navigates to add person
+- [x] Navigates back
+- [x] Navigates up
+- [x] Navigates to view person
+- [x] Navigates to add person
 
 ### GalleryActivity
-- [ ] Navigates back
-- [ ] Navigates up
-- [ ] Navigates to view person
-- [ ] Navigates to add person
+- [x] Navigates back
+- [x] Navigates up
+- [x] Navigates to view person
+- [x] Navigates to add person
 
 ### LearningModeActivity
 - [ ] Navigates back
