@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import no.hvl.nameapp.data.Person;
 import no.hvl.nameapp.data.PersonDB;
@@ -23,12 +24,13 @@ public class SelectModeActivity extends AppCompatActivity {
         String name = prefs.getString("owner", "");
 
         if (name.isEmpty()) {
-
+            Toast.makeText(getApplicationContext(),R.string.no_owner, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, AddPersonActivity.class);
             intent.putExtra("setOwner", true);
             startActivity(intent);
 
         } else {
+            Toast.makeText(getApplicationContext(),"Welcome back, " + name, Toast.LENGTH_LONG).show();
             PersonDB db = PersonDB.getInstance();
             Person p = new Person(null, name);
             db.addPerson(p);

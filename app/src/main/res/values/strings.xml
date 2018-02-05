@@ -17,5 +17,6 @@
     <string name="person_name_hint">Enter name...</string>
     <string name="no_name">Name can\'t be empty!</string>
     <string name="correct">Correct!</string>
-    <string name="wrong">Wrong! This was  </string>
+    <string name="no_owner">No owner set, please do!</string>
+
 </resources>
