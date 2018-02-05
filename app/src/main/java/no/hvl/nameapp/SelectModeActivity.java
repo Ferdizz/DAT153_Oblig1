@@ -2,6 +2,7 @@ package no.hvl.nameapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,20 +13,14 @@ public class SelectModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_mode);
-
-        // Retrieve preferences
-        SharedPreferences settings = getPreferences(0);
-        String owner = settings.getString("name", "");
-        Log.e("NAME: ", owner);
-
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String owner = prefs.getString("name", "");
         if (owner.isEmpty()) {
-
             Intent intent = new Intent(this, AddPersonActivity.class);
             intent.putExtra("setOwner", true);
             startActivity(intent);
-
         }
+        setContentView(R.layout.activity_select_mode);
     }
 
     public void listNames(View view) {
