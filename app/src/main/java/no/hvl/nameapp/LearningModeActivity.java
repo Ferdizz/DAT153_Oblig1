@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,7 +44,6 @@ public class LearningModeActivity extends AppCompatActivity {
         scoreCountView = findViewById(R.id.textView_score);
         scoreCountView.setText(score.toString());
         imageView = findViewById(R.id.imageView4);
-
         imageView.setImageURI(currentPerson.getImageURI());
         guessed = new ArrayList<>();
         guessed.add(currentPerson);
@@ -54,6 +54,10 @@ public class LearningModeActivity extends AppCompatActivity {
         String guess = guessText.getText().toString();
         if (isGuessCorrect(currentPerson, guess)) {
             score++;
+            Toast.makeText(getApplicationContext(), R.string.correct, Toast.LENGTH_SHORT).show();
+        } else {
+
+            Toast.makeText(getApplicationContext(), "Wrong, that was " + currentPerson.getName() + "!", Toast.LENGTH_SHORT).show();
         }
 
         if (isGameover()) {
@@ -68,12 +72,11 @@ public class LearningModeActivity extends AppCompatActivity {
                     .setNegativeButton("Return to Menu", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Intent intent = new Intent(getApplicationContext(), SelectModeActivity.class);
-                            startActivity(intent);
+                            finish();
                         }
-                    }).show();
-
-            startNewGame();
+                    })
+                    .setCancelable(false)
+                    .show();
         } else {
             while (guessed.contains(currentPerson)) {
                 currentPerson = db.getRandomPerson();
@@ -86,7 +89,6 @@ public class LearningModeActivity extends AppCompatActivity {
 
     private void update() {
         guessed.add(currentPerson);
-      //  imageView.setImageURI(currentPerson.getImageURI());
         changeImage(getApplicationContext(),imageView,currentPerson.getImageURI());
         scoreCountView.setText(score.toString());
         guessText.setText("");
@@ -100,25 +102,23 @@ public class LearningModeActivity extends AppCompatActivity {
         return (guess.toLowerCase()).equals(currentPerson.getName().toLowerCase());
     }
 
-    private void changeImage(Context c,final ImageView v,final Uri new_image) {
-         final Animation anim_out = AnimationUtils.loadAnimation(c, android.R.anim.slide_out_right);
-         final Animation anim_in  = AnimationUtils.loadAnimation(c, android.R.anim.slide_in_left);
-        anim_out.setAnimationListener(new Animation.AnimationListener()
-        {
+    private void changeImage(Context c,final ImageView v,final Uri newImage) {
+         final Animation out = AnimationUtils.loadAnimation(c, android.R.anim.slide_out_right);
+         final Animation in  = AnimationUtils.loadAnimation(c, android.R.anim.slide_in_left);
+         out.setAnimationListener(new Animation.AnimationListener() {
             @Override public void onAnimationStart(Animation animation) {}
             @Override public void onAnimationRepeat(Animation animation) {}
-            @Override public void onAnimationEnd(Animation animation)
-            {
-                v.setImageURI(new_image);
-                anim_in.setAnimationListener(new Animation.AnimationListener() {
+            @Override public void onAnimationEnd(Animation animation) {
+                v.setImageURI(newImage);
+                in.setAnimationListener(new Animation.AnimationListener() {
                     @Override public void onAnimationStart(Animation animation) {}
                     @Override public void onAnimationRepeat(Animation animation) {}
                     @Override public void onAnimationEnd(Animation animation) {}
                 });
-                v.startAnimation(anim_in);
+                v.startAnimation(in);
             }
         });
-        v.startAnimation(anim_out);
+        v.startAnimation(out);
     }
     }
 
