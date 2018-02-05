@@ -8,6 +8,7 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="pluss">+</string>
     <string name="add_person">Add person</string>
+    <string name="set_owner">Set owner</string>
     <string name="guess">Guess</string>
     <string name="guess_who">Who is this?</string>
     <string name="score">Score</string>

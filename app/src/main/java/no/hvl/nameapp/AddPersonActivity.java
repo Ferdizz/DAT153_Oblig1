@@ -2,6 +2,7 @@ package no.hvl.nameapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,6 +26,7 @@ import no.hvl.nameapp.data.PersonDB;
 public class AddPersonActivity extends AppCompatActivity {
 
     private PersonDB db = PersonDB.getInstance();
+    private boolean setOwner;
     private String imagePath;
     private Uri uri;
 
@@ -35,6 +37,9 @@ public class AddPersonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_person);
+
+        Intent intent = getIntent();
+        setOwner = intent.getBooleanExtra("setOwner", false);
     }
 
     public void captureImage(View view) {
@@ -48,7 +53,7 @@ public class AddPersonActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            if(imageFile != null){
+            if (imageFile != null) {
                 uri = FileProvider.getUriForFile(this, "no.hvl.nameapp.fileprovider", imageFile);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
                 startActivityForResult(intent, REQUEST_CAMERA);
@@ -83,8 +88,21 @@ public class AddPersonActivity extends AppCompatActivity {
         } else {
             Person p = new Person(uri, name);
             db.addPerson(p);
+            Intent intent;
 
-            Intent intent = new Intent(this, ListNamesActivity.class);
+            if (setOwner) {
+
+                intent = new Intent(this, SelectModeActivity.class);
+
+                SharedPreferences settings = getPreferences(0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("name", name);
+                editor.commit();
+
+            } else {
+                intent = new Intent(this, ListNamesActivity.class);
+            }
+
             startActivity(intent);
             finish();
         }
