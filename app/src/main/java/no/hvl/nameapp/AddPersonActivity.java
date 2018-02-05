@@ -88,20 +88,12 @@ public class AddPersonActivity extends AppCompatActivity {
         } else {
             Person p = new Person(uri, name);
             db.addPerson(p);
-            Intent intent;
 
             if (setOwner) {
-
-                intent = new Intent(this, SelectModeActivity.class);
-
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                 prefs.edit().putString("owner", name).commit();
-
-            } else {
-                intent = new Intent(this, ListNamesActivity.class);
             }
 
-            startActivity(intent);
             finish();
         }
     }

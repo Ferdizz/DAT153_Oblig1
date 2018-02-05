@@ -27,7 +27,6 @@ public class SelectModeActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AddPersonActivity.class);
             intent.putExtra("setOwner", true);
             startActivity(intent);
-            finish();
 
         } else {
             PersonDB db = PersonDB.getInstance();
