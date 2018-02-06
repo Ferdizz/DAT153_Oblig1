@@ -1,13 +1,17 @@
 package no.hvl.nameapp;
 
+import android.content.Context;
+import android.preference.PreferenceManager;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -31,6 +35,16 @@ public class TestGalleryActivity {
     public ActivityTestRule<SelectModeActivity> mActivityRule =
             new ActivityTestRule(SelectModeActivity.class);
 
+    @Before
+    public void setUp() {
+        Context context = getInstrumentation().getTargetContext();
+         PreferenceManager
+                .getDefaultSharedPreferences(context)
+                .edit()
+                .putString("owner", "TestOwner")
+                .commit();
+
+    }
 
     @Test
     public void testNavigateUp() {
