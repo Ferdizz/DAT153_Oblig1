@@ -2,6 +2,7 @@ package no.hvl.nameapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,8 +23,9 @@ public class SelectModeActivity extends AppCompatActivity {
         // Retrieve preferences
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String name = prefs.getString("owner", "");
+        String uri = prefs.getString("imgURI", "");
 
-        if (name.isEmpty()) {
+        if (name.isEmpty() || uri.isEmpty()) {
             Toast.makeText(getApplicationContext(),R.string.no_owner, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, AddPersonActivity.class);
             intent.putExtra("setOwner", true);
@@ -32,7 +34,7 @@ public class SelectModeActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(),"Welcome back, " + name, Toast.LENGTH_LONG).show();
             PersonDB db = PersonDB.getInstance();
-            Person p = new Person(null, name);
+            Person p = new Person(Uri.parse(uri), name);
             db.addPerson(p);
         }
     }

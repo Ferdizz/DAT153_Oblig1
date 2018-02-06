@@ -85,6 +85,8 @@ public class AddPersonActivity extends AppCompatActivity {
 
         if (name.isEmpty()) {
             Toast.makeText(getApplicationContext(), R.string.no_name, Toast.LENGTH_LONG).show();
+        } else if(uri == null) {
+            Toast.makeText(getApplicationContext(), R.string.no_img, Toast.LENGTH_LONG).show();
         } else {
             Person p = new Person(uri, name);
             db.addPerson(p);
@@ -92,6 +94,7 @@ public class AddPersonActivity extends AppCompatActivity {
             if (setOwner) {
                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                 prefs.edit().putString("owner", name).commit();
+                prefs.edit().putString("imgURI", uri.toString()).commit();
             }
 
             finish();

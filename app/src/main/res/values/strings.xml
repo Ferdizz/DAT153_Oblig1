@@ -16,6 +16,7 @@
     <string name="capture_image">Capture image</string>
     <string name="person_name_hint">Enter name...</string>
     <string name="no_name">Name can\'t be empty!</string>
+    <string name="no_img">Please select an image</string>
     <string name="correct">Correct!</string>
     <string name="no_owner">No owner set, please do!</string>
 
