@@ -1,6 +1,7 @@
 package no.hvl.nameapp;
 
 import android.content.Context;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -37,6 +38,7 @@ public class TestSelectModeActivity {
                 .getDefaultSharedPreferences(context)
                 .edit()
                 .putString("owner", "TestOwner")
+                .putString("imgURI", Uri.parse("android.resource://no.hvl.nameapp/" + R.drawable.img1).toString())
                 .commit();
     }
 

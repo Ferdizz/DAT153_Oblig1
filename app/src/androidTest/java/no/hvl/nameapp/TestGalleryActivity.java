@@ -1,6 +1,7 @@
 package no.hvl.nameapp;
 
 import android.content.Context;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -10,6 +11,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.net.URI;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onData;
@@ -42,8 +45,8 @@ public class TestGalleryActivity {
                 .getDefaultSharedPreferences(context)
                 .edit()
                 .putString("owner", "TestOwner")
+                .putString("imgURI", Uri.parse("android.resource://no.hvl.nameapp/" + R.drawable.img1).toString())
                 .commit();
-
     }
 
     @Test
